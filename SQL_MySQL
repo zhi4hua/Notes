@@ -1,0 +1,3 @@
+# 列出薪资等于 job_listings 表中最高薪资的职务名称
+SELECT title, salary FROM job_listings
+  WHERE salary = (SELECT MAX(salary) FROM job_listings);
