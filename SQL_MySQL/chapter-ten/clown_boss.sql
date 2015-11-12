@@ -16,3 +16,9 @@ INSERT INTO clown_boss(boss_id)
         (5),
         (5),
         (10);
+
+# 添加外联系关系,联接表 clown_info
+ALTER TABLE clown_boss
+	ADD CONSTRAINT clown_info_id_fk
+		FOREIGN KEY (boss_id)
+		REFERENCES clown_info (id);
