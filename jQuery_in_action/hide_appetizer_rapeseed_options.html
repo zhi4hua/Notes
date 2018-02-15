@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <DOCTYPE html>
+=======
+<!DOCTYPE html>
+>>>>>>> origin/master
 <html>
   <head>
     <meta charset="utf-8">
@@ -14,6 +18,7 @@
     <!--  jquery of cdn    -->
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <script>
+<<<<<<< HEAD
       $(document).ready(function() {
       $(':checkbox').click(function() {
         var checked = this.checked;
@@ -21,8 +26,17 @@
         alert('to this!');
         // $('input[type=text]', $(this).parents('div:first').attr('disabled', !checked));
         });
+=======
+      $(':checkbox').click(function() {
+        var checked = this.checked;
+        $('div', $(this).parents('div:first')).css('display', checked ? 'block' : 'none');
+        // $('input[type=text]', $(this).parents('div:first').attr('disabled', !checked));
+>>>>>>> origin/master
       });
     </script>
   </body>
 </html>
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
