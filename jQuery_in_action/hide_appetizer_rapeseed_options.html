@@ -22,6 +22,10 @@
     .remind {
       outline: 1px solid green;
     }
+
+    .success {
+      color: green;
+    }
   </style>
   <!--  jquery of cdn    -->
   <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
@@ -31,9 +35,15 @@
 
       $(':checkbox').click(function() {
         var checked = this.checked;
-        $('div').css('display', checked ? 'block' : 'none');
+        // $('div').css('display', checked ? 'block' : 'none');
         $('<h3>checked = ' + checked + '</h3>').appendTo($('body'));
-        $('input[type=text]').attr('disabled', !checked).css('color', checked ? 'block' : '#f0f0f0').val(1).change();
+        $('input[type=text]')
+          .attr('disabled', !checked)
+          .css('color', checked ? 'block' : '#f0f0f0')
+          .val(1)
+          .change(function() {
+            $('<span class="success">' + 'change!' + '</span>').appendTo($(this).parent());
+          });
       });
     });
   </script>
