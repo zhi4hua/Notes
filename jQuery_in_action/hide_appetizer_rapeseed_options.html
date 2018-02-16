@@ -9,18 +9,31 @@
 </head>
 <body>
   <div>
-    <input type="checkbox" >
+    <h2>div father</h2>
+    <input type="checkbox" ><span>checkbox</span>
+    <div>
+      <label for="menu">menu</label>
+      <input type="text" name="menu" id="menu">
+    </div>
   </div>
   
+  <!-- style -->
+  <style type="text/css">
+    .remind {
+      outline: 1px solid green;
+    }
+  </style>
   <!--  jquery of cdn    -->
   <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
   <script>
     $(document).ready(function() {
+      $('div').addClass('remind');
+
       $(':checkbox').click(function() {
         var checked = this.checked;
-        $('div', $(this).parents('div:first')).css('display', checked ? 'block' : 'none');
-        alert('to this!');
-        // $('input[type=text]', $(this).parents('div:first').attr('disabled', !checked));
+        $('div').css('display', checked ? 'block' : 'none');
+        $('<h3>checked = ' + checked + '</h3>').appendTo($('body'));
+        $('input[type=text]').attr('disabled', !checked).css('color', checked ? 'block' : '#f0f0f0').val(1).change();
       });
     });
   </script>
