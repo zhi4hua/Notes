@@ -4,21 +4,107 @@
 <head>
   <meta charset="utf-8">
   <title>
-    隐藏开胃子菜单
+    隐藏开胃子菜单 Bamboo asian Grille - online order Form
   </title>
+
+  <!-- Font Awesome css, BootstrapCDN （由MaxCDN提供） -->
+  <link href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
-  <div>
-    <h2>div father</h2>
-    <input type="checkbox" ><span>checkbox</span>
+
+  <!-- <h1>Bamboo Asian Grille</h1>
+  <h2>Online Order Menu - 在线订购菜单</h2>
+  <fieldset>
+    <legend>Appetizers - 开胃菜</legend>
+
     <div>
-      <label for="menu">menu</label>
-      <input type="text" name="menu" id="menu">
+      <label>
+        <input type="checked" name="Appetizers" value="imperial">
+        Fried Imperials rolls (2)
+      </label>
+      <span price="3">
+        <input type="text" name="imperial.quantity" disabled="disabled" value="1">
+        $<span></span>
+      </span>
+      <div>
+        <label>
+          <input type="radio" name="imperial.option" value="pork" checked="checked">
+          Pork - 猪肉
+        </label>
+        <label>
+          <input type="radio" name="imperial.option" value="vegetarian">
+          Vegetarian - 素食主义者
+        </label>
+      </div>
     </div>
+
+    <div>
+      <label>
+        <input type="checked" name="appetizers" value="spring">
+        Spring rolls (2) - 春卷
+      </label>
+      <span price="4">
+        <input type="radio" name="spring.option" value="pork" checked="checked">
+        Pork - 猪肉
+      </span>
+    </div>
+  </fieldset> -->
+
+  <!-- 改为画廊 -->
+  <!-- Change into a gallery -->
+  <!-- 参考地址对象 https://detail.tmall.com/item.htm?spm=a230r.1.14.17.61cb72b40yoEUm&id=541166697783&ns=1&abbucket=19&sku_properties=1627207:880406562 -->
+  <!-- Reference address object https://detail.tmall.com/item.htm?spm=a230r.1.14.17.61cb72b40yoEUm&id=541166697783&ns=1&abbucket=19&sku_properties=1627207:880406562 -->
+  <!-- display box -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="jumbotron ">
+        <div class="col-md-6">
+          <img class="frame" src="https://img.alicdn.com/bao/uploaded/i5/TB1NSodNVXXXXaIXXXX1bts_pXX_054625.jpg">
+        </div>
+        <div class="col-md-6">
+          <em class="yen">¥</em>
+          <span class="price">119</span>
+
+          <!-- Style selection area -->
+          <div class="container-fluid gallery row" id="gallery" alt="gallery" title="gallery">
+            <div class="col-md-3 frame">
+              <input type="checkbox" name="red" link="https://img.alicdn.com/bao/uploaded/i3/TB1u_9oOpXXXXbXaXXXJXYB8pXX_023821.jpg" price="119">
+              <span class="label label-danger">red</span>
+            </div>
+            <div class="col-md-3 frame">
+              <input type="checkbox" name="yellow" link="https://img.alicdn.com/bao/uploaded/i7/TB1RSaMOpXXXXcKXXXXbyzs8pXX_023743.jpg" price="119">
+              <span class="label label-warning">yellow</span>
+            </div>
+            <div class="col-md-3 frame">
+              <input type="checkbox" name="blue" link="https://img.alicdn.com/bao/uploaded/i5/TB1NSodNVXXXXaIXXXX1bts_pXX_054625.jpg" price="119">
+              <span class="label label-primary">blue</span>
+            </div>
+            <div class="col-md-3 frame">
+              <i class="fa fa-file-image-o fa-5x"></i>
+            </div>
+          </div>
+      </div>
+    </div>
+
+    <!-- // 数量，要买多少鞋 -->
+    <!-- // Quantity, how many shoes to buy -->
+    <div class="number">
+      <input type="number" name="number" min="1" max="99">
+      <label for="number">
+        <span class="label black_font">pairs</span>
+      </label>
+    </div>
+
   </div>
-  
+
+  <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <!-- style -->
   <style type="text/css">
+    .aim {
+      outline: 1px red dashed;
+    }
+
     .remind {
       outline: 1px solid green;
     }
@@ -26,24 +112,60 @@
     .success {
       color: green;
     }
+
+    .col-md-6 img {
+      width: 100%;
+    }
+
+    .frame:hover {
+      background-color: rgba(10, 10, 10, 0.1);
+    }
+
+    .price {
+      color: #FF0036;
+      font-size: 30px;
+    }
+
+    /* 数量，多少双鞋
+     * Quantity, how many pairs of shoes
+     */
+    .number input {
+      width: 3em;
+    }
+
+    /*
+     * black font
+     */
+     .black_font {
+      color: black;
+     }
   </style>
   <!--  jquery of cdn    -->
   <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
   <script>
     $(document).ready(function() {
-      $('div').addClass('remind');
+      var numberDiv = $('.number').detach();
+      // numberDiv.hide();
+      
+      // 添加框，框值为数量，买多少双鞋
+      // Add box, box value, and how many pairs of shoes
+      $('.frame > input[type="checkbox"]').each(function() {
+          $(this).parent('.frame').append(numberDiv.clone().hide());
+      });
+      $('i.fa').addClass('btn');
 
       $(':checkbox').click(function() {
         var checked = this.checked;
-        // $('div').css('display', checked ? 'block' : 'none');
-        $('<h3>checked = ' + checked + '</h3>').appendTo($('body'));
-        $('input[type=text]')
+        $('.price').val($(this).attr('price'));
+
+        $('img.frame').attr('src', $(this).attr('link'));
+        $('div', $(this).parents('div:first')).css('display', checked ? 'block' : 'none');
+
+        $('input[type=number]')
           .attr('disabled', !checked)
-          .css('color', checked ? 'block' : '#f0f0f0')
+          // .css('color', !checked ? 'block' : '#f0f0f0')
           .val(1)
-          .change(function() {
-            $('<span class="success">' + 'change!' + '</span>').appendTo($(this).parent());
-          });
+          .focus();
       });
     });
   </script>
