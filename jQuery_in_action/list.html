@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Collapsibie List - Tabe 1</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<legend>Collapsible List &mdash; Take 1</legend>
+	<ul>
+		<li>Item 1</li>
+		<li>Item 2</li>
+		<li>Item 3
+			<ul>
+				<li>Item 3.1</li>
+				<li>Item 3.2
+					<ul>
+						<li>Item 3.2.1</li>
+						<li>Item 3.2.2</li>
+						<li>Item 3.2.3</li>
+					</ul>
+				</li>
+				<li>Item 3.3</li>
+			</ul>
+		</li>
+		<li>
+			Item 4
+			<ul>
+				<li>Item 4.1</li>
+				<li>Item 4.2
+					<ul>
+						<li>Item 4.2.1</li>
+						<li>Item 4.2.2</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li>Item 5</li>
+	</ul>
+
+	<style type="text/css">
+		.aim {
+			outline: 1px red dashed;
+		}
+
+		.selected {
+			cursor: pointer ;
+		}
+
+		.selected:hover {
+			text-shadow: 0 0 1px gray;
+		}
+
+	</style>
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			// 隐藏二级ul标签
+			// Hide the two level UL tag
+			// $('li > ul').hide();
+
+			// 光标改为“手”，如果有子标签
+			// The cursor is changed to "hand", if there is a sublabel
+			// $('li').each(function (index, element) {
+			// 	var clickOn = false;
+
+			// 	if ($(element).children('ul').length > 0) {
+			// 		$(element).addClass('selected').children('ul').hide();
+			// 		$(element).click(function() {
+			// 			clickOn = true;
+			// 			var element1 = $(element).children('ul');
+			// 			element1.toggle('slow');
+			// 			if (clickOn) {
+			// 				clickOn = !clickOn;
+			// 				return false;
+			// 			}
+			// 		});
+			// 	}
+			// });
+
+			$('li:has(ul)').click(function(event) {
+				if (this == event.target)
+					// if ($(this).children().is(':hidden')) {
+						// $(this).children().toggle('fast');
+					// } else {
+						$(this).children().toggle('fast');
+					// }
+					return false;
+			}).css('cursor', 'pointer').click();
+
+			// $('li:not(:has(ul))').css({
+			// 	cursor: 'default',
+			// });
+		});
+	</script>
+</body>
+</html>
